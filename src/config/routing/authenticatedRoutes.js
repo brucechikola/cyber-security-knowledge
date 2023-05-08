@@ -1,5 +1,6 @@
 
 import Dashboard from "views/admin/dashboard";
+import SuperAdmin from "views/superAdmin";
 export default [
 
     {
@@ -9,6 +10,15 @@ export default [
         isRoot: true,
         icon: '',
         roles: ['admin'],
+        items: []
+    },
+    {
+        element: <SuperAdmin />,
+        path: '/sadbd',
+        title: 'Super Admin Dashboard',
+        isRoot: true,
+        icon: '',
+        roles: ['super admin'],
         items: []
     },
 

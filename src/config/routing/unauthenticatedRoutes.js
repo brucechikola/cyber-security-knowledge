@@ -1,8 +1,8 @@
-import Login from "views/auth/login";
+import Auth from "views/auth";
 
 export default [
     {
-        element: <Login />,
+        element: <Auth />,
         path: '/auth',
         title: '',
         isRoot: false,

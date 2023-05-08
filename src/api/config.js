@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 
 const vars = {
-    server: 'http://localhost:1337/api',
+    server: 'http://89.58.45.133:1337/api',
     local: 'http://localhost:1337/api'
 }
 
@@ -13,7 +13,7 @@ export const Respond = (status = false, response = '') => {
     status ? data['data'] = response : data['error'] = response
     return data
 }
-export const SetHeaders = ({ additional_headers = '', is_file_upload = false }) => {
+export const SetHeaders = (additional_headers = '', is_file_upload = false) => {
     const { token } = useSelector(state => state.auth.session)
     let h = {
         Authorization: `Bearer ${token}`,
@@ -35,7 +35,7 @@ export const GetUser = () => {
 
 export let API_CONFIG = {
     request_type: 'GET',
-    base_endpoint: vars.local,
+    base_endpoint: vars.server,
     request_endpoint: '',
     headers: {},
     body: '',
@@ -55,10 +55,11 @@ export let API_CONFIG = {
     endpoint_extensions: {
         auth: '/auth/local',
         user: '/auth/local/register',
-        subscriptions: '/subscriptions',
-        albums: '/albums',
-        audio: '/audio',
-        upload: '/upload',
+        locations: '/locations?populate=province,criminal_activities.criminal_activity_type',
+        new_location: '/locations?populate=*',
+        provinces: '/provinces',
+        criminal_activity_types: '/criminal-activity-types?populate=criminal_activities.criminal_activity_type,criminal_activities.location',
+        criminal_activities: '/criminal-activities?populate=*',
     },
 
 }

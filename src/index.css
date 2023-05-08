@@ -39,3 +39,39 @@ code {
 :where(.css-dev-only-do-not-override-zjzpde).ant-select:not(.ant-select-customize-input) .ant-select-selector {
   border: none;
 }
+
+
+
+.map-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+  /* border: 1px solid gray; */
+  background-color: rgb(59, 16, 133);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  border-radius: 5px;
+}
+
+/* --- (4) Leaflet container with map dimensions (other properties optional) --- */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+}
+
+.leaflet-bottom.leaflet-right {
+  display: none !important;
+}

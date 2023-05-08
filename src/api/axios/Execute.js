@@ -1,4 +1,4 @@
-import { API_CONFIG, API_SETUP, SetHeaders } from "api/config"
+import { API_CONFIG, API_SETUP, Respond, SetHeaders } from "api/config"
 import axios from "axios"
 export default class Execute {
     configure(props) {
@@ -35,8 +35,16 @@ export default class Execute {
         this.configure({
             request_type: API_CONFIG.request_types.get,
             endpoint_extension: params.endpoint_extension,
+            headers: params.headers
         })
-        return await this.request()
+        return this.request().then(resolve => {
+            if (resolve.status === API_CONFIG.status_codes.success) {
+                return Respond(true, resolve.data.data)
+            }
+            else return Respond(false, resolve)
+        }).catch(err => {
+            return Respond(false, err)
+        });
     }
     async post(params) {
         this.configure({
@@ -45,7 +53,14 @@ export default class Execute {
             body: params.body,
             headers: params.headers
         })
-        return await this.request()
+        return this.request().then(resolve => {
+            if (resolve.status === API_CONFIG.status_codes.success) {
+                return Respond(true, resolve.data)
+            }
+            else return Respond(false, resolve)
+        }).catch(err => {
+            return Respond(false, err)
+        });
     }
     async update(params) {
         console.log("updating")

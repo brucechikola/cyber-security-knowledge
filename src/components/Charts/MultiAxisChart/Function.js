@@ -1,8 +1,5 @@
-import React from 'react'
 import ApexCharts from 'apexcharts'
-
 export default function RenderMultiAxisChart({ data = [] }) {
-
     var options = {
         chart: {
             height: 300,
@@ -12,28 +9,13 @@ export default function RenderMultiAxisChart({ data = [] }) {
         dataLabels: {
             enabled: false
         },
-        colors: ['#382fa3', '#1bbfa8', '#8C29F0'],
+        colors: ['#332785', '#1bbfa8', '#8C29F0'],
         series: [
 
             {
-                name: 'Murder',
+                name: 'Cases',
                 type: 'column',
-                data: [21.1, 23, 33.1, 34, 44.1, 44.9, 56.5, 58.5, 20, 5, 30, 40]
-            },
-            {
-                name: "Snatching",
-                type: 'column',
-                data: [10, 19, 27, 26, 34, 35, 40, 38, 44, 11, 55, 11]
-            },
-            {
-                name: "Starbing",
-                type: 'column',
-                data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6, 19, 56, 15, 28]
-            },
-            {
-                name: "Kidnapping",
-                type: 'column',
-                data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6, 19, 56, 15, 28]
+                data: data?.values
             },
         ],
         stroke: {
@@ -45,7 +27,7 @@ export default function RenderMultiAxisChart({ data = [] }) {
             }
         },
         xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: data?.categories || []
         },
         yaxis: [
             {
@@ -57,24 +39,17 @@ export default function RenderMultiAxisChart({ data = [] }) {
                     show: true,
                 },
                 title: {
-                    text: "Columns"
+                    text: "Total Cases"
+                },
+                labels: {
+                    formatter: function (value) {
+                        return Math.round(value);
+                    }
                 }
             },
             {
                 seriesName: 'Column A',
                 show: false
-            }, {
-                opposite: true,
-                seriesName: 'Line C',
-                axisTicks: {
-                    show: true
-                },
-                axisBorder: {
-                    show: true,
-                },
-                title: {
-                    text: "Line"
-                }
             }
         ],
         tooltip: {

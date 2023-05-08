@@ -1,6 +1,6 @@
 import { Select } from 'antd';
-const App = ({ id, value, placeholder = "Search options", className, options, label, labelClassName, onChange }) => (
-    <div className={`w-full flex flex-col`}>
+const App = ({ id, value, placeholder = "Search options", wrapperClassName, className, options, label, labelClassName, onChange }) => (
+    <div className={`${wrapperClassName} flex flex-col`}>
         {
             label && <label className={labelClassName}>{label}</label>
         }

@@ -13,6 +13,7 @@ const InputField = forwardRef((props, ref) => {
         value,
         width = '150px',
         wrapperClass = '',
+        required = false,
         options = [{ 'label': 'Select an option', value: '' }],
         ...rest
     } = props
@@ -31,6 +32,7 @@ const InputField = forwardRef((props, ref) => {
                         type={type || 'text'}
                         className={`form-control w-full min-w-[${width}] min-h-[35px] px-3 border border-1 border-gray-200 rounded-md transition ease-in-out focus:outline-none ${className}`}
                         id={id}
+                        required={true}
                         placeholder={placeholder}
                         {...rest}
                     />
@@ -59,7 +61,7 @@ const InputField = forwardRef((props, ref) => {
                         onChange={onChange}
                         value={value}
                         placeholder={placeholder}
-                        className={`${className} text-black p-3 h-[150px] px-8 rounded-md min-h-[80px] w-full`} />
+                        className={`${className} text-black p-3 h-[150px] px-5 rounded-md min-h-[50px] w-full`} />
                 }
             </div>
         </div >

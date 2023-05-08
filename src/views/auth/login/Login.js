@@ -1,11 +1,7 @@
 import Authentication from 'api/axios/Authentication'
 import { API_CONFIG } from 'api/config'
-import Action from 'components/shared/Action'
 import Button from 'components/shared/Button'
-import Card from 'components/shared/Card'
-import Container from 'components/shared/Container'
 import InputField from 'components/shared/InputField'
-import Logo from 'components/template/Logo'
 import { useFormik } from 'formik'
 import ClipLoader from "react-spinners/ClipLoader";
 import React, { useState } from 'react'
@@ -30,10 +26,14 @@ export default function Login() {
         }).then(resolve => {
             setLoading(false)
             if (resolve.status) {
-
                 dispatch(storeCredentials(resolve.data))
                 dispatch(setLayout(LAYOUTS.ADMIN_LAYOUT))
-                natvigate('/dbd')
+                if (resolve.data.user.is_super_admin) {
+                    natvigate('/sadbd')
+                }
+                else {
+                    natvigate('/dbd')
+                }
             }
             else {
                 setError("Invalid credentials!")
@@ -46,61 +46,49 @@ export default function Login() {
     const { values, touched, handleChange, handleSubmit, errors } = useFormik({
         initialValues: {
             email: 'lacksonbanda@gmail.com',
-            password: 'young377529',
+            password: '377529',
         },
         onSubmit
     })
     return (
-        <Container className="flex items-center justify-center h-[100vh]">
-            <div className="w-[100px] h-[100px] absolute bg-red-100 rounded-md"></div>
-            <div className="w-[50%] h-[100%] bg-defaultcolor absolute right-0 bg-coverd"></div>
-            <Card className="w-[500px] h-[600px] bg-white shadow-dark border-0 flex items-center justify-center flex-col z-[5]">
-                <Logo width={140} />
-                <h3 className='font-bold my-10 text-[20px] text-slate-700 mt-3'>Crime Hotspot Knowledge Base System</h3>
-                <form onSubmit={handleSubmit} className="w-[83%] mt-10">
-                    <h5 className='w-full items-center justify-center text-red-500 text-center'>{resp_error}</h5>
-                    <div className="w-full grid grid-cols-1 gap-4">
-                        <InputField
-                            onChange={handleChange}
-                            id="email"
-                            value={values.email}
-                            labelClassName="text-black text-[15px]"
-                            label="Email"
-                            placeholder="Enter your email"
-                            wrapperClass="w-full"
-                            className="text-black h-[50px]"
-                            required
-                            type="text"
+        <form onSubmit={handleSubmit} className="w-[83%]">
+            <h5 className='w-full items-center justify-center text-red-500 text-center'>{resp_error}</h5>
+            <div className="w-full grid grid-cols-1 gap-4">
+                <InputField
+                    onChange={handleChange}
+                    id="email"
+                    value={values.email}
+                    labelClassName="text-black text-[13px]"
+                    label="Email"
+                    placeholder="Enter your email"
+                    wrapperClass="w-full"
+                    className="text-black h-[50px] text-[14px]"
+                    required
+                    type="text"
+                />
+                <InputField
+                    onChange={handleChange}
+                    id="password"
+                    value={values.password}
+                    labelClassName="text-black text-[13px]"
+                    label="Password"
+                    placeholder="Enter your password"
+                    wrapperClass="w-full"
+                    className="text-black h-[45px]"
+                    required
+                    type="password"
+                />
+                <div className="w-full h-full flex items-end justify-end mt-2">
+                    <Button type="submit" disabled={loading ? true : false} onClick={handleSubmit} className="h-[45px] w-full border-0 hover:bg-indigo-900 bg-defaultcolor text-white font-bold" >
+                        <span className="mr-3">{loading ? 'Please Wait' : 'Login'}</span>
+                        <ClipLoader
+                            color='#ffffff'
+                            loading={loading}
+                            size={20}
                         />
-                        <InputField
-                            onChange={handleChange}
-                            id="password"
-                            value={values.password}
-                            labelClassName="text-black text-[15px]"
-                            label="Password"
-                            placeholder="Enter your password"
-                            wrapperClass="w-full"
-                            className="text-black h-[45px]"
-                            required
-                            type="password"
-                        />
-                        <div className="w-full h-full flex items-end justify-end mt-2">
-                            <Button type="submit" disabled={loading ? true : false} onClick={handleSubmit} className="h-[45px] w-full border-0 hover:bg-indigo-900 bg-defaultcolor text-white font-bold" >
-                                <span className="mr-3">{loading ? 'Please Wait' : 'Submit'}</span>
-                                <ClipLoader
-                                    color='#ffffff'
-                                    loading={loading}
-                                    size={20}
-                                />
-                            </Button>
-                        </div>
-                    </div>
-                </form>
-                <div className="my-5 w-[83%] flex items-center justify-between mt-10">
-                    <Action title="Forgot Password?" className="text-defaultcolor text-[14px]" />
-                    <Action title="Create Account" className="text-defaultcolor text-[14px]" />
+                    </Button>
                 </div>
-            </Card>
-        </Container>
+            </div>
+        </form>
     )
 }
