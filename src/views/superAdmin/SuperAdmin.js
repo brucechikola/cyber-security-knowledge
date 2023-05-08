@@ -50,7 +50,7 @@ export default function SuperAdmin() {
                             {
                                 locState && (
                                     <button className='flex items-center justify-center mr-5 w-[100px] h-[30px]  rounded-md bg-red-800 text-white' onClick={() => setLocState(false)}>
-                                        <FaRegTimesCircle className=' mr-2' />
+                                        <FaRegTimesCircle className='mr-2' />
                                         Close
                                     </button>
                                 )
