@@ -4,7 +4,7 @@ import PageControlsTab from 'components/shared/PageControlsTab'
 import Select from 'components/shared/Select'
 import Title from 'components/shared/Title'
 import React, { useEffect, useState } from 'react'
-import { MdOutlineAddCircleOutline } from 'react-icons/md'
+import { MdArrowRightAlt, MdOutlineAddCircleOutline } from 'react-icons/md'
 import Locations from './components/Locations'
 import CriminalActivityTypes from './components/CriminalActivityTypes'
 import CriminalActivities from './components/CriminalActivities'
@@ -15,6 +15,7 @@ import NewCriminalActivity from './components/NewCriminalActivity'
 import { FaRegTimesCircle } from 'react-icons/fa'
 import { GetLocations } from 'functions/common'
 import { SetHeaders } from 'api/config'
+import { useNavigate } from 'react-router-dom'
 
 export default function SuperAdmin() {
     const headers = SetHeaders()
@@ -23,6 +24,7 @@ export default function SuperAdmin() {
     const [activityTypeState, setActivityTypeState] = useState(false)
     const [activityListState, setActivityListState] = useState(false)
     const [locOptions, setLocOptions] = useState([])
+    const navigate = useNavigate()
     useEffect(() => {
         GetLocations(headers).then(locs => {
             const nl = locs?.map(l => {
@@ -41,7 +43,11 @@ export default function SuperAdmin() {
                     <Title title="Crime Hotspot Super Admin" className="text-white" />
                     <span className='text-[13px] text-white'>Update the info from here</span>
                 </div>
-
+                <button
+                    className="flex items-center justify-center px-3 py-2 rounded-md bg-white text-[13px] w-[200px]"
+                    onClick={() => navigate('/crime-details')}
+                >View Full Details <MdArrowRightAlt className="ml-2 text-[20px]" />
+                </button>
             </PageControlsTab>
             <div className='w-full  mt-4 grid grid-cols-2 gap-x-4'>
                 <div className='w-full bg-white shadow-dark rounded-md flex items-center justify-start flex-col min-h-[400px]'>

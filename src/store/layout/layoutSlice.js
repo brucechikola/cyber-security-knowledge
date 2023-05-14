@@ -8,7 +8,7 @@ export const layoutSlice = createSlice({
     reducers: {
         setLayout: (state, action) => {
             state.layout = action.payload
-        }
+        },
     }
 })
 export const { setLayout } = layoutSlice.actions

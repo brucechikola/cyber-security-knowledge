@@ -14,7 +14,7 @@ export default class Execute {
             body: body
         })
     }
-    async request() {
+    async request(params) {
         API_CONFIG.headers['Content-Type'] = 'application/json'
         const url = `${API_CONFIG.base_endpoint}${API_CONFIG.request_endpoint}`
         switch (API_CONFIG.request_type) {
@@ -25,7 +25,7 @@ export default class Execute {
             case API_CONFIG.request_types.update:
                 return await axios.put(url, { headers: API_CONFIG.headers, body: JSON.stringify(API_CONFIG.body) })
             case API_CONFIG.request_types.delete:
-                return await axios.delete(url, { headers: API_CONFIG.headers, body: JSON.stringify(API_CONFIG.body) })
+                return await axios.delete(`${url}${params.id}?cascade=1`, { headers: API_CONFIG.headers, body: JSON.stringify(API_CONFIG.body) })
             default:
                 console.error("Unknown request type")
                 break;
@@ -66,7 +66,20 @@ export default class Execute {
         console.log("updating")
     }
     async delete(params) {
-        console.log("deleting")
+        this.configure({
+            request_type: API_CONFIG.request_types.delete,
+            endpoint_extension: params.endpoint_extension,
+            body: params.body,
+            headers: params.headers,
+        })
+        return this.request({ id: params.id }).then(resolve => {
+            if (resolve.status === API_CONFIG.status_codes.success) {
+                return Respond(true, resolve.data)
+            }
+            else return Respond(false, resolve)
+        }).catch(err => {
+            return Respond(false, err)
+        });
     }
 
     async uploadFile(params) {

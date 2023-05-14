@@ -13,9 +13,12 @@ import { SetHeaders } from 'api/config'
 import { useDispatch, useSelector } from 'react-redux'
 import CrimesMap from './components/CrimesMap'
 import CrimesByLocation from './components/CrimesByLocation'
+import { useNavigate } from 'react-router-dom'
+import { MdArrowRightAlt } from 'react-icons/md'
 export default function Dashboard() {
     const headers = SetHeaders()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [isFullScreen, setIsFullScreen] = useState(false)
     useEffect(() => {
         GetLocations(headers).then(resolve => {
@@ -37,12 +40,11 @@ export default function Dashboard() {
                     <Title title="Crime Hotspot Dashboard" className="text-white" />
                     <span className='text-[13px] text-white'>Get the most updated info about crimes occurred in different areas</span>
                 </div>
-                <div className="flex items-center justify-center w-[max-content]">
-                    <Select className="mr-2 h-[40px] w-[200px] bg-white rounded-md" />
-                    <div className="w-[200px]">
-                        <DateField onCahnge={(e, string) => setFilterDate(string)} className="h-[40px] w-[100%]" label='' />
-                    </div>
-                </div>
+                <button
+                    className="flex items-center justify-center px-3 py-2 rounded-md bg-white text-[13px] w-[200px]"
+                    onClick={() => navigate('/crime-details')}
+                >View Full Details <MdArrowRightAlt className="ml-2 text-[20px]" />
+                </button>
             </PageControlsTab>
             <div className={`w-full min-h-[400px] mt-4 ${!isFullScreen ? 'grid grid-cols-3 gap-x-4' : 'flex items-start justify-center h-[70vh]'}`}>
                 <FullMap data={locations} onFullScreen={state => setIsFullScreen(state)} />

@@ -35,6 +35,8 @@ export const GetProvinces = async (headers) => {
         }
     })
 }
+
+
 export const GetLocations = async (headers) => {
     return new Execute().get({
         endpoint_extension: API_CONFIG.endpoint_extensions.locations,
@@ -121,4 +123,25 @@ export const GetCriminalActivities = async (headers) => {
             return []
         }
     })
+}
+
+export const DeleteEntry = async (headers, id, endpoint) => {
+    return new Execute().delete({
+        id: id,
+        headers: headers,
+        endpoint_extension: endpoint
+    }).then(resolve => {
+        return resolve
+    })
+}
+
+
+
+export const DownloadReport = (data) => {
+    const csvString = `SN,Crime Type,Location,Description,Date,Time\n` + data.map(d => `${d.sn},${d.type},${d.location},${d.description},${d.date},${d.time}`).join('\n');
+    const link = document.createElement('a');
+    link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvString));
+    link.setAttribute('download', 'Criminal Activities Report.csv');
+    document.body.appendChild(link);
+    link.click();
 }

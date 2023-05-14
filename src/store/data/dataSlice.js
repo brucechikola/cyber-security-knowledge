@@ -4,7 +4,9 @@ const initialState = {
     locations: [],
     crime_types: [],
     criminal_activities: [],
-    filterDate: `${new Date()}`
+    filterDate: `${new Date()}`,
+    selectedLocation: 'All Locations',
+    selectedType: 'All Crime Types',
 }
 export const dataSlice = createSlice({
     name: 'dataSlice',
@@ -25,12 +27,20 @@ export const dataSlice = createSlice({
         setFilterDate: (state, action) => {
             state.filterDate = action.payload
         },
+        setSelectedLocation: (state, action) => {
+            state.selectedLocation = action.payload
+        },
+        setSelectedType: (state, action) => {
+            state.selectedType = action.payload
+        }
     }
 })
 export const { setProvinces,
     setLocations,
     setCrimeTypes,
     setCriminalActivities,
-    setFilterDate
+    setFilterDate,
+    setSelectedLocation,
+    setSelectedType
 } = dataSlice.actions
 export default dataSlice.reducer

@@ -60,6 +60,9 @@ export let API_CONFIG = {
         provinces: '/provinces',
         criminal_activity_types: '/criminal-activity-types?populate=criminal_activities.criminal_activity_type,criminal_activities.location',
         criminal_activities: '/criminal-activities?populate=*',
+        locations_delete: '/locations/',
+        criminal_activity_types_delete: '/criminal-activity-types/',
+        criminal_activities_delete: '/criminal-activities/',
     },
 
 }

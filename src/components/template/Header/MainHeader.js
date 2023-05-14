@@ -8,10 +8,16 @@ import { FiLogOut } from 'react-icons/fi'
 import { MdEmail } from 'react-icons/md'
 import { signOut } from 'store/auth/sessionSlice'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 export default function MainHeader() {
     const dispatch = useDispatch()
     const [dropdown, setDropdown] = useState(false)
     const user = GetUser()
+    const navigate = useNavigate()
+    const goHome = () => {
+        (user.is_super_admin) ? navigate('/sadbd') : navigate('/dbd')
+
+    }
     const DropDown = () => {
         return (
             <div className="w-[280px] min-h-[max-content] text-slate-700 bg-white rounded-md shadow-darker z-[20] top-[80px] right-[0] text-[14px] p-5 absolute right-0 top-0">
@@ -35,7 +41,7 @@ export default function MainHeader() {
             <div className='header w-full bg-whites h-[70px] text-white flex items-center justify-center shadows-mds z-10 '>
                 <div className='absolute w-full h-[350px] bg-defaultcolor top-0 left-0 z-[-1] rounded-bl-[50px] rounded-br-[50px]'></div>
                 <div className='w-4/5 h-full flex items-center justify-between'>
-                    <div className='flex items-center justify-between'>
+                    <div className='flex items-center justify-between cursor-pointer' onClick={goHome}>
                         <div className='flex items-center justify-center p-3 bg-white mr-3 rounded-b-[20px]'>
                             <Logo style={{ width: 90 }} />
                         </div>
