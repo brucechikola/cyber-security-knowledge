@@ -23,7 +23,7 @@ export default function CriminalActivityTypes() {
                 const nd = resolve.map(ct => {
                     return {
                         type: <Type title={ct.type} />,
-                        desc: ct.description,
+                        // desc: ct.description,
                         edit: <CreateActions data={ct} type="edit" />,
                         delete: <CreateActions data={ct} type="delete" />
                     }
@@ -77,14 +77,14 @@ export default function CriminalActivityTypes() {
             Header: 'Crime Type',
             accessor: 'type'
         },
-        {
-            Header: 'Brief Description',
-            accessor: 'desc'
-        },
-        {
-            Header: 'Edit',
-            accessor: 'edit'
-        },
+        // {
+        //     Header: 'Brief Description',
+        //     accessor: 'desc'
+        // },
+        // {
+        //     Header: 'Edit',
+        //     accessor: 'edit'
+        // },
         {
             Header: 'Delete',
             accessor: 'delete'

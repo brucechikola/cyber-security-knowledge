@@ -30,17 +30,12 @@ export default function SignUp() {
         }).then(resolve => {
             setLoading(false)
             if (resolve.status) {
-                dispatch(storeCredentials(resolve.data))
+                dispatch(storeCredentials({ token: resolve.data.jwt, user: resolve.data.user }))
                 dispatch(setLayout(LAYOUTS.ADMIN_LAYOUT))
-                if (resolve.data.user.is_super_admin) {
-                    natvigate('/sadbd')
-                }
-                else {
-                    natvigate('/dbd')
-                }
+                natvigate('/dbd')
             }
             else {
-                setError("Invalid credentials!")
+                setError("Something went wrong!")
                 setTimeout(() => {
                     setError("")
                 }, 3000);

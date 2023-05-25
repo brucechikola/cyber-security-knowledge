@@ -24,7 +24,7 @@ export default function Locations() {
                     return {
                         location: <Location title={l.location} />,
                         province: l.province,
-                        edit: <CreateActions data={l} type="edit" />,
+                        // edit: <CreateActions data={l} type="edit" />,
                         delete: <CreateActions data={l} type="delete" />
                     }
                 })
@@ -80,10 +80,10 @@ export default function Locations() {
             Header: 'Province',
             accessor: 'province'
         },
-        {
-            Header: 'Edit',
-            accessor: 'edit'
-        },
+        // {
+        //     Header: 'Edit',
+        //     accessor: 'edit'
+        // },
         {
             Header: 'Delete',
             accessor: 'delete'

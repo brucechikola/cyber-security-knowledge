@@ -55,7 +55,7 @@ export default function NewCriminalActivityType() {
     const { values, handleChange, handleSubmit, errors } = useFormik({
         initialValues: {
             type: '',
-            description: '',
+            // description: '',
         },
         onSubmit
     })
@@ -74,7 +74,7 @@ export default function NewCriminalActivityType() {
                 required
                 type="text"
             />
-            <InputField
+            {/* <InputField
                 onChange={handleChange}
                 id="description"
                 value={values.description}
@@ -85,7 +85,7 @@ export default function NewCriminalActivityType() {
                 className="w-full col-span-2 h-[40px] text-[13px] mb-3"
                 required
                 type="text"
-            />
+            /> */}
             <Select
                 className="border rounded-md h-[40px]"
                 placeholder='Select Icon'
