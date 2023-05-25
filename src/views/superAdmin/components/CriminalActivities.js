@@ -90,6 +90,20 @@ export default function CriminalActivities() {
             accessor: 'delete'
         },
     ]
+    const cols2 = [
+        {
+            Header: 'Location',
+            accessor: 'location'
+        },
+        {
+            Header: 'Description',
+            accessor: 'desc'
+        },
+        {
+            Header: 'Date',
+            accessor: 'date'
+        }
+    ]
 
     const Location = ({ title }) => {
         return <div className="flex items-center justify-start">
@@ -106,8 +120,13 @@ export default function CriminalActivities() {
     }
 
     return (
-        <div className='w-[90%] items-center justify-ceter'>
-            <PaginatedTable columns={cols} data={criminal_activities} pageSize={5} />
-        </div>
+        <>
+            <div className='w-[90%] activities items-center justify-ceter'>
+                <PaginatedTable columns={cols} data={criminal_activities} pageSize={5} />
+            </div>
+            <div className='w-full activities2 items-center justify-ceter'>
+                <PaginatedTable columns={cols2} data={criminal_activities} pageSize={5} />
+            </div>
+        </>
     )
 }

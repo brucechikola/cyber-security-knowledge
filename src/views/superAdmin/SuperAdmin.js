@@ -37,19 +37,19 @@ export default function SuperAdmin() {
         })
     }, [])
     return (
-        <Container className='flex items-center justify-start flex-col mt-2'>
-            <PageControlsTab>
-                <div>
+        <Container className='flex wrapper-97 mx-auto items-center justify-start flex-col mt-2'>
+            <PageControlsTab className="controls-tab">
+                <div className='view-full-content'>
                     <Title title="Crime Hotspot Super Admin" className="text-white" />
                     <span className='text-[13px] text-white'>Update the info from here</span>
                 </div>
                 <button
-                    className="flex items-center justify-center px-3 py-2 rounded-md bg-white text-[13px] w-[200px]"
+                    className="view-full-btn flex items-center justify-center px-3 py-2 rounded-md bg-white text-[13px] w-[200px]"
                     onClick={() => navigate('/crime-details')}
                 >View Full Details <MdArrowRightAlt className="ml-2 text-[20px]" />
                 </button>
             </PageControlsTab>
-            <div className='w-full  mt-4 grid grid-cols-2 gap-x-4'>
+            <div className='w-full sa-main-content  mt-4 grid grid-cols-2 gap-x-4'>
                 <div className='w-full bg-white shadow-dark rounded-md flex items-center justify-start flex-col min-h-[400px]'>
                     <div className='w-full flex items-center justify-between h-[60px] mt-4 border-b pb-5'>
                         <span className='text-gray-500 font-bold text-sm ml-4 flex items-center mr-10'>

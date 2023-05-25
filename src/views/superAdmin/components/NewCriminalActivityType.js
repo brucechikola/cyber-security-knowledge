@@ -60,7 +60,7 @@ export default function NewCriminalActivityType() {
         onSubmit
     })
     return (
-        <form onSubmit={handleSubmit} className='w-[90%] grid grid-cols-2 gap-x-[5px] pb-4'>
+        <form onSubmit={handleSubmit} className='w-[90%] dir-col grid grid-cols-2 gap-x-[5px] pb-4'>
             <span className='w-full col-span-2 font-bold my-2 text-gray-600'>Add New Crime Type</span>
             <InputField
                 onChange={handleChange}

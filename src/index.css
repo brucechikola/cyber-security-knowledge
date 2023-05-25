@@ -75,3 +75,100 @@ code {
 .leaflet-bottom.leaflet-right {
   display: none !important;
 }
+
+.activities2 {
+  display: none !important;
+}
+
+.full-1 {
+  display: flex;
+}
+
+.full-2 {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper-80 {
+    width: 90% !important;
+  }
+
+  .wrapper-100 {
+    width: 100%;
+  }
+
+  .login-card-wrapper {
+    width: 100%;
+  }
+
+  .full-logo {
+    display: none;
+  }
+
+  .nav-email {
+    display: none;
+  }
+
+  .controls-tab {
+    flex-direction: column;
+  }
+
+  .view-full-content {
+    align-self: flex-start;
+  }
+
+  .view-full-btn {
+    margin-top: 15px;
+    align-self: flex-start;
+  }
+
+  .main-content {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 0 !important;
+  }
+
+  .sa-main-content {
+    display: flex;
+    flex-direction: column !important;
+    gap: 30px 0;
+  }
+
+  .full-map {
+    height: 400px;
+    margin-bottom: 30px;
+  }
+
+  .wrapper-97 {
+    width: 95%;
+  }
+
+  .activities {
+    display: none;
+  }
+
+  .activities2 {
+    display: flex !important;
+  }
+
+  .dir-col {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .filters-wrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .head-content {
+    flex-direction: column;
+  }
+
+  .full-1 {
+    display: none;
+  }
+
+  .full-2 {
+    display: flex;
+  }
+}

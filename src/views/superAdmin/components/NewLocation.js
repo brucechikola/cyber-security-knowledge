@@ -43,7 +43,7 @@ export default function NewLocation() {
         onSubmit
     })
     return (
-        <form onSubmit={handleSubmit} className='w-[90%] grid grid-cols-2 gap-x-[5px]'>
+        <form onSubmit={handleSubmit} className='w-[90%] dir-col grid grid-cols-2 gap-x-[5px]'>
             <span className='w-full col-span-2 font-bold my-2 text-gray-600'>Add New Location</span>
             <Select
                 className="border rounded-md h-[40px]"

@@ -35,7 +35,7 @@ export function FullMap({ data, onFullScreen }) {
     }
 
     return (
-        <div className='w-full h-full bg-white shadow-dark rounded-md relative p-1 bg-slate-100 col-span-2 '>
+        <div className='full-map w-full h-full bg-white shadow-dark rounded-md relative p-1 bg-slate-100 col-span-2 '>
             <button
                 onClick={() => toggleFullScreen()}
                 className='w-[170px] h-[30px] hover:bg-indigo-800 text-white font-bold transition duration-500 bg-indigo-900 rounded-md absolute right-[20px] top-[20px] z-[20000] text-[13px] shadow-darker flex items-center justify-center'

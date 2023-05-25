@@ -12,10 +12,10 @@ export default function Auth() {
     const natvigate = useNavigate()
     const [currentAuthPage, setCurrentAuthPage] = useState('login')
     return (
-        <Container className="flex items-center justify-center h-[100vh]">
+        <Container className="login-card-wrapper flex items-center justify-center h-[100vh]">
             <div className="w-[100px] h-[100px] absolute rounded-md"></div>
             {/* <div className="w-[50%] h-[100%] bg-defaultcolor absolute right-0 bg-coverd"></div> */}
-            <Card className="w-[500px] min-h-[600px] py-3 h-[max-content] bg-white shadow-darks border-slate-200 flex items-center justify-center flex-col z-[5]">
+            <Card className="login-card w-[500px] min-h-[600px] py-3 h-[max-content] bg-white shadow-darks border-slate-200 flex items-center justify-center flex-col z-[5]">
                 <Logo width={100} />
                 <div className="my-5">
                     <h5 className='font-bold my-10 text-[14px] text-slate-700 mt-3'>Crime Hotspot Knowledge Base System</h5>

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import AreaChart from 'components/Charts/AreaChart/AreaChart'
 import { GiGasMask } from 'react-icons/gi'
 import { MdLocationPin } from 'react-icons/md'
 import { BsCalendar2Date, BsClockFill } from 'react-icons/bs'
-import { AiFillEdit } from 'react-icons/ai'
 import { SetHeaders } from 'api/config'
 import { useDispatch } from 'react-redux'
 import { GetCriminalActivities } from 'functions/common'
@@ -11,7 +9,6 @@ import PaginatedTable from 'components/Tables/PaginatedTable'
 
 export default function RecentCriminalCases(props) {
     const headers = SetHeaders('', false)
-    const dispatch = useDispatch()
     const [activities, setActivities] = useState([])
     useEffect(() => {
         GetCriminalActivities(headers).then(resolve => {

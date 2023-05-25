@@ -34,26 +34,26 @@ export default function Dashboard() {
     }, [])
     const { locations } = useSelector(state => state.data)
     return (
-        <Container className='flex items-center justify-start flex-col mt-2'>
-            <PageControlsTab>
+        <Container className='wrapper-100 flex items-center justify-start flex-col mt-2'>
+            <PageControlsTab className="controls-tab wrapper-80">
                 <div>
                     <Title title="Crime Hotspot Dashboard" className="text-white" />
                     <span className='text-[13px] text-white'>Get the most updated info about crimes occurred in different areas</span>
                 </div>
                 <button
-                    className="flex items-center justify-center px-3 py-2 rounded-md bg-white text-[13px] w-[200px]"
+                    className="view-full-btn flex items-center justify-center px-3 py-2 rounded-md bg-white text-[13px] w-[200px]"
                     onClick={() => navigate('/crime-details')}
                 >View Full Details <MdArrowRightAlt className="ml-2 text-[20px]" />
                 </button>
             </PageControlsTab>
-            <div className={`w-full min-h-[400px] mt-4 ${!isFullScreen ? 'grid grid-cols-3 gap-x-4' : 'flex items-start justify-center h-[70vh]'}`}>
+            <div className={`main-content wrapper-80 w-full min-h-[400px] mt-4 ${!isFullScreen ? 'grid grid-cols-3 gap-x-4' : 'flex items-start justify-center h-[70vh]'}`}>
                 <FullMap data={locations} onFullScreen={state => setIsFullScreen(state)} />
                 {
                     !isFullScreen && <CrimesMap />
                 }
             </div>
             {
-                !isFullScreen && <div className='w-full h-m-[250px] mt-4 grid grid-cols-2 gap-x-4'>
+                !isFullScreen && <div className='w-full main-content wrapper-97 h-m-[250px] mt-4 grid grid-cols-2 gap-x-4'>
                     <CrimesByLocation />
                     <RecentCriminalCases />
                 </div>

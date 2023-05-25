@@ -108,6 +108,20 @@ export default function CrimeDetails() {
             accessor: 'time'
         },
     ]
+    const cols2 = [
+        {
+            Header: 'Location',
+            accessor: 'location'
+        },
+        {
+            Header: 'Description',
+            accessor: 'desc'
+        },
+        {
+            Header: 'Date',
+            accessor: 'date'
+        },
+    ]
     const Location = ({ title }) => {
         return <div className="flex items-center justify-start">
             <MdLocationPin className="text-indigo-900 text-[18px] mr-2" />
@@ -123,13 +137,13 @@ export default function CrimeDetails() {
     }
 
     return (
-        <Container>
-            <PageControlsTab>
+        <Container className="wrapper-97 mx-auto">
+            <PageControlsTab className="controls-tab">
                 <div>
                     <Title title="Criminal Activities In Details" className="text-white" />
                     <span className='text-[13px] text-white'>Get the most updated info about crimes occurred in different areas</span>
                 </div>
-                <div className='flex items-center'>
+                <div className='flex items-center filters-wrapper'>
                     <Select
                         className="border rounded-md h-[40px] bg-white"
                         placeholder='Select Crime Type'
@@ -153,7 +167,7 @@ export default function CrimeDetails() {
                 </div>
             </PageControlsTab>
             <div className='w-full h-full bg-white min-h-[400px] rounded-md p-3'>
-                <div className='w-full flex items-center justify-between'>
+                <div className='w-full head-content flex items-center justify-between'>
                     <span className='text-slate-700 text-[13px]'>Details | Crime Type: <span className='text-red-600'>{selectedType}</span> | Location: <span className='text-red-600'>{selectedLocation}</span></span>
                     <button
                         className='flex items-center justify-center bg-indigo-900 px-4 py-1 rounded-md text-white text-[14px]'
@@ -163,7 +177,12 @@ export default function CrimeDetails() {
                         Download Report
                     </button>
                 </div>
-                <PaginatedTable columns={cols} data={filtered} pageSize={10} />
+                <div className='w-full full-1'>
+                    <PaginatedTable columns={cols} data={filtered} pageSize={10} />
+                </div>
+                <div className='w-full full-2'>
+                    <PaginatedTable columns={cols2} data={filtered} pageSize={10} />
+                </div>
             </div>
         </Container>
     )

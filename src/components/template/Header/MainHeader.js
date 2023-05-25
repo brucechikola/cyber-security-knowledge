@@ -40,12 +40,12 @@ export default function MainHeader() {
         <>
             <div className='header w-full bg-whites h-[70px] text-white flex items-center justify-center shadows-mds z-10 '>
                 <div className='absolute w-full h-[350px] bg-defaultcolor top-0 left-0 z-[-1] rounded-bl-[50px] rounded-br-[50px]'></div>
-                <div className='w-4/5 h-full flex items-center justify-between'>
+                <div className='wrapper-80 w-4/5 h-full flex items-center justify-between'>
                     <div className='flex items-center justify-between cursor-pointer' onClick={goHome}>
                         <div className='flex items-center justify-center p-3 bg-white mr-3 rounded-b-[20px]'>
                             <Logo style={{ width: 90 }} />
                         </div>
-                        <h2 className='text-white font-bold'>Crime Hotspot Knowledge Base System</h2>
+                        <h2 className='full-logo text-white font-bold'>Crime Hotspot Knowledge Base System</h2>
                     </div>
                     <div className='flex items-center justify-center relative transition relative'>
 
