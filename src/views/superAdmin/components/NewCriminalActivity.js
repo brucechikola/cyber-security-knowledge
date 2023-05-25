@@ -8,7 +8,7 @@ import { useFormik } from 'formik'
 import { ClipLoader } from 'react-spinners'
 import { GetCrimeTypes, GetLocations } from 'functions/common'
 import DateField from 'components/shared/DateField'
-import TimeField from 'components/TimeField'
+import TimeField from 'components/shared/TimeField'
 export default function NewCriminalActivity() {
     const ex = new Execute()
     let [loading, setLoading] = useState(false);
